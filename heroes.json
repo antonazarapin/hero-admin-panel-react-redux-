@@ -1,35 +1,55 @@
 {
   "heroes": [
     {
-      "id": 1,
-      "name": "Первый герой",
-      "description": "Первый герой в рейтинге!",
+      "id": "775e6f15-da4e-4fcc-85f3-77f32565b704",
+      "name": "loki",
+      "description": "Великолепный",
       "element": "fire"
     },
     {
-      "id": 2,
-      "name": "Второй герой",
-      "description": "Просто шикарный тип",
+      "id": "82251dcd-6551-4be9-9605-7612b952f669",
+      "name": "Anton",
+      "description": "Лучше всех ",
+      "element": "earth"
+    },
+    {
+      "id": "cc627dde-cfd9-4660-859d-6e945b9ef3fd",
+      "name": "thor",
+      "description": "Умею делать очень многое в своей жизни",
       "element": "water"
     },
     {
-      "id": "715756e4-3c5d-46f1-a384-71209b3739da",
-      "name": "loki",
-      "description": "Умею делать очень многое в своей жизни",
-      "element": "wind"
-    },
-    {
-      "id": "254aa0d5-bbbf-4dc8-ac3e-a79a1fef2c0a",
-      "name": "thor",
-      "description": "Я очень силен со своим молотом",
+      "id": "6b1093df-c1b8-4616-8a79-baf6f3bf78ae",
+      "name": "Angelina",
+      "description": "Самая красивая",
       "element": "wind"
     }
   ],
   "filters": [
-    "all",
-    "fire",
-    "water",
-    "wind",
-    "earth"
+    {
+      "name": "all",
+      "className": "btn-outline-dark",
+      "label": "Все"
+    },
+    {
+      "name": "fire",
+      "className": "btn-danger",
+      "label": "Огонь"
+    },
+    {
+      "name": "water",
+      "className": "btn-primary",
+      "label": "Вода"
+    },
+    {
+      "name": "wind",
+      "className": "btn-success",
+      "label": "Ветер"
+    },
+    {
+      "name": "earth",
+      "className": "btn-secondary",
+      "label": "Земля"
+    }
   ]
 }

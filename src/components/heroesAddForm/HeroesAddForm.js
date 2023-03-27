@@ -1,22 +1,32 @@
 import { ErrorMessage, Field, useFormik, Form, Formik } from "formik";
 import * as Yup from "yup"
 import { v4 as uuidv4 } from 'uuid';
+import { useSelector } from "react-redux";
 
 import { useDispatch } from 'react-redux';
 import { heroAdd } from "../../actions";
-
-// Задача для этого компонента:
-// Реализовать создание нового героя с введенными данными. Он должен попадать
-// в общее состояние и отображаться в списке + фильтроваться
-// Уникальный идентификатор персонажа можно сгенерировать через uiid
-// Усложненная задача:
-// Персонаж создается и в файле json при помощи метода POST
-// Дополнительно:
-// Элементы <option></option> желательно сформировать на базе
-// данных из фильтров
+import { useHttp } from "../../hooks/http.hook";
 
 const HeroesAddForm = () => {
     const dispatch = useDispatch();
+    const {request} = useHttp();
+    const {filters, filtersLoadingStatus} = useSelector(state => state)
+
+    const renderOptions = (filters, status) => {
+        if (status === 'loading') {
+            return <option>Загрузка</option>
+        } else if (status === 'error') {
+            return <option>Ошибка загрузки</option>
+        }
+
+        if (filters && filters.length > 0) {
+            return filters.map(({name, label}) => {
+                if (name === 'all') return;
+
+                return <option key={name} value={name}>{label}</option>
+            })
+        }
+    }
 
     return (
         <Formik
@@ -34,7 +44,7 @@ const HeroesAddForm = () => {
                             .required('*Обязательное поле'),
                 element: Yup.string().required('*Выберите элемент героя'),
             })}
-            onSubmit = {values => {
+            onSubmit = {(values, {resetForm}) => {
                 const newHero = {
                     id: uuidv4(),
                     name: values.name,
@@ -42,17 +52,10 @@ const HeroesAddForm = () => {
                     element: values.element
                 }
                 
-                fetch(`http://localhost:3001/heroes`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                        },
-                    body: JSON.stringify({
-                        id: `${newHero.id}`,
-                        name: `${newHero.name}`, 
-                        description: `${newHero.description}`, 
-                        element: `${newHero.element}` })})
+                request(`http://localhost:3001/heroes`, 'POST', JSON.stringify(newHero))
                     .then(dispatch(heroAdd(newHero)))
+                    .then(resetForm())
+                    .then(document.activeElement.blur())
                     .catch(error => console.error(error))
             }}>
 
@@ -92,10 +95,7 @@ const HeroesAddForm = () => {
                         name="element"
                         as='select'>
                         <option >Я владею элементом...</option>
-                        <option value="fire">Огонь</option>
-                        <option value="water">Вода</option>
-                        <option value="wind">Ветер</option>
-                        <option value="earth">Земля</option>
+                        {renderOptions(filters, filtersLoadingStatus)}
                     </Field>
 
                     <ErrorMessage name="element" style={{color: 'red', paddingLeft: '7px'}} component="div"/>
