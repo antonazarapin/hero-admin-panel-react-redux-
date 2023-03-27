@@ -11,6 +11,18 @@
       "name": "Второй герой",
       "description": "Просто шикарный тип",
       "element": "water"
+    },
+    {
+      "id": "715756e4-3c5d-46f1-a384-71209b3739da",
+      "name": "loki",
+      "description": "Умею делать очень многое в своей жизни",
+      "element": "wind"
+    },
+    {
+      "id": "254aa0d5-bbbf-4dc8-ac3e-a79a1fef2c0a",
+      "name": "thor",
+      "description": "Я очень силен со своим молотом",
+      "element": "wind"
     }
   ],
   "filters": [
