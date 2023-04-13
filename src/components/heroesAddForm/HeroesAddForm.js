@@ -10,7 +10,7 @@ import { useHttp } from "../../hooks/http.hook";
 const HeroesAddForm = () => {
     const dispatch = useDispatch();
     const {request} = useHttp();
-    const {filters, filtersLoadingStatus} = useSelector(state => state)
+    const {filters, filtersLoadingStatus} = useSelector(state => state.filters)
 
     const renderOptions = (filters, status) => {
         if (status === 'loading') {
@@ -104,9 +104,6 @@ const HeroesAddForm = () => {
                 <button type="submit" className="btn btn-primary">Создать</button>
             </Form>
         </Formik>
-
-
-
     )
 }
 

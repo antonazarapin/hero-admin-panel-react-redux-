@@ -1,12 +1,6 @@
 {
   "heroes": [
     {
-      "id": "775e6f15-da4e-4fcc-85f3-77f32565b704",
-      "name": "loki",
-      "description": "Великолепный",
-      "element": "fire"
-    },
-    {
       "id": "82251dcd-6551-4be9-9605-7612b952f669",
       "name": "Anton",
       "description": "Лучше всех ",
@@ -23,6 +17,18 @@
       "name": "Angelina",
       "description": "Самая красивая",
       "element": "wind"
+    },
+    {
+      "id": "26b2edee-7adf-4326-b72a-f57f173c0bd4",
+      "name": "loki",
+      "description": "Великолепный",
+      "element": "fire"
+    },
+    {
+      "id": "615264f6-d61f-44e6-b266-bc56744521be",
+      "name": "Bony",
+      "description": "Чудак и простофиля",
+      "element": "water"
     }
   ],
   "filters": [
