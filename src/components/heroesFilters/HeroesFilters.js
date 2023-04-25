@@ -3,8 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from "classnames";
 
-import { fetchFilters } from "../../actions";
-import { activeFilterChanged } from "./filtersSlice";
+import { activeFilterChanged, fetchFilters } from "./filtersSlice";
 import Spinner from '../spinner/Spinner';
 
 const HeroesFilters = () => {
@@ -13,7 +12,7 @@ const HeroesFilters = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchFilters(request))
+        dispatch(fetchFilters())
     }, []);
 
     if (filtersLoadingStatus === "loading") {

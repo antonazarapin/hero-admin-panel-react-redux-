@@ -29,6 +29,12 @@
       "name": "Bony",
       "description": "Чудак и простофиля",
       "element": "water"
+    },
+    {
+      "id": "2dbd102b-363c-43eb-bcd9-00842903a735",
+      "name": "Bita",
+      "description": "Творю беспредел",
+      "element": "earth"
     }
   ],
   "filters": [
