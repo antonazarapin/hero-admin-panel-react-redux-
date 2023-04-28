@@ -5,12 +5,14 @@ import { useSelector } from "react-redux";
 
 import { useDispatch } from 'react-redux';
 import { heroAdd } from "../heroesList/heroesSlice";
+import {selectAll} from "../heroesFilters/filtersSlice";
 import { useHttp } from "../../hooks/http.hook";
 
 const HeroesAddForm = () => {
     const dispatch = useDispatch();
     const {request} = useHttp();
-    const {filters, filtersLoadingStatus} = useSelector(state => state.filters)
+    const {filtersLoadingStatus} = useSelector(state => state.filters)
+    const filters = useSelector(selectAll);
 
     const renderOptions = (filters, status) => {
         if (status === 'loading') {
